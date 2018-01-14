@@ -13,9 +13,6 @@ Features:
  * Ability to exit the program, reset the board, change between some built in layouts
  * Custom board layout creator
 
-Things that will be implemented soon:
- * Instructions for the "create a board" tab, possibly by pop-up window
-
 Things to add/improve:
  * Currently, the whole scene is discarded and redrawn every time a move is made. There is probably a better way to do this, by somehow keeping track of all objects in the scene and adding or removing them as necessary.
  * Animation of "jumps"

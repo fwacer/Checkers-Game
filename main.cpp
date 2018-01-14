@@ -37,6 +37,7 @@
 #include <QTimer>
 #include <QPushButton>
 #include <QComboBox>
+#include <QMessageBox>
 
 #include "main.h"
 #include "checkersgame.h"
@@ -170,6 +171,16 @@ void drawSceneBoard( QGraphicsScene & scene){
         letter->setText(QString(s[0]));
         scene.addItem(letter);
     }
+
+    if(userCreatingBoardFlag){
+        QMessageBox::information(0, QString("Information"),
+                                 QString("Welcome to the board layout creator!\n"
+                                         "Left click a square to cycle through the colours.\n"
+                                         "Right click to promote/demote.\n"
+                                         "Press Play when you are ready.\n"
+                                         "This board will not be saved if you enter the board creator again."), QMessageBox::Ok);
+
+    }
 }
 void drawScenePieces(QGraphicsScene & scene, std::map<std::pair<char, char>, char> & gameBoard){
     //int xOffset = 10;
@@ -285,7 +296,6 @@ int main(int argc, char *argv[])
             case CustomBoardPlay:
                 gameBoard = userCreatedBoard;
                 break;
-
                 /*Room for future layouts*/
             }
             checkPromote(gameBoard);
@@ -298,10 +308,12 @@ int main(int argc, char *argv[])
             resetFlag = false;
         }
         if (refreshFlag){
-            scene.clear();
-            drawSceneBoard(scene);
-            drawScenePieces(scene, gameBoard);
-            refreshFlag = false;
+            if(!userCreatingBoardFlag){
+                scene.clear();
+                drawSceneBoard(scene);
+                drawScenePieces(scene, gameBoard);
+                refreshFlag = false;
+            }
         }
     });
     timer->start(100);
