@@ -4,6 +4,8 @@ Author: Bryce Dombrowski
 
 Date: January 13th, 2018
 
+Blog post: https://brycedombrowski.com/2018/01/13/winter-2017-18-checkers-game-gui/
+
 Info: 
  * This project began as an exercise to keep in coding shape over the winter break. After finishing a rudimentary version of checkers that took place in the console, I very quickly became tired of manually typing every move. This is when I decided to add a clickable and shiny front end. Over the course of this project I learned improved coding practices, which I hope is reflected in this final product, even if it is not perfect. If you have any questions or have any feedback, please contact me! I would love to hear your input.
 
@@ -23,5 +25,3 @@ Known bug:
 
 Acknowledgements:
  * This project had help from many of the Qt examples, especially: http://doc.qt.io/qt-5/qtwidgets-graphicsScene-dragdroprobot-example.html
- 
-https://brycedombrowski.com/2018/01/13/winter-2017-18-checkers-game-gui/
