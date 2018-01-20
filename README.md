@@ -14,11 +14,17 @@ Features:
  * Move legality checking for movement and "jumping"
  * Ability to exit the program, reset the board, change between some built in layouts
  * Custom board layout creator
+ * A fancy installer (not necessary, but was interesting to learn!)
+
+Photo:
+
+![Checkers image](https://brycedombrowski.files.wordpress.com/2018/01/checkers.png)
 
 Things to add/improve:
  * Currently, the whole scene is discarded and redrawn every time a move is made. There is probably a better way to do this, by somehow keeping track of all objects in the scene and adding or removing them as necessary.
  * Animation of "jumps"
  * AI for a computer opponent
+ * Deployment on Linux / Mac
 
 Known bug:
  * If a game piece is dragged and dropped outside of the gameboard or window, the piece is not redrawn on the board. It can be redrawn by making some sort of move (legal or not, does not matter) or by pressing the "refresh" button. This behaviour is caused by the mouseReleaseEvent not triggering over any of the objects of the scene. If you know a solution, please let me know.
