@@ -69,13 +69,23 @@ void drawSceneBoard( QGraphicsScene & scene){
     titleText->setFont(QFont("Arial", 55));
     titleText->setPos(160, 0);
 
+    //Displays github link
+    QGraphicsTextItem * brandingLink = scene.addText(QString("https://github.com/fwacer/Checkers-Game"));
+    brandingLink->setFont(QFont("Arial", 14));
+    brandingLink->setPos(574, 0);
+
+    //Displays author name
+    QGraphicsTextItem * authorName = scene.addText(QString("By Bryce"));
+    authorName->setFont(QFont("Calibri", 16));
+    authorName->setPos(575, 50);
+
     QGraphicsTextItem * playerTurnText = scene.addText( (playerTurn == White) ? QString("White to move") : QString("Black to move") );
-    playerTurnText->setFont(QFont("Calibri", 14));
+    playerTurnText->setFont(QFont("Arial", 16));
     playerTurnText->setPos(0, 30);
 
     //Displays if the move was valid or if a colour has won
     QGraphicsTextItem * displayBar = scene.addText(QString(gameStateVector.at(gameStatusFlag).c_str()));
-    displayBar->setFont(QFont("Arial", 18));
+    displayBar->setFont(QFont("Arial", 22));
     displayBar->setPos(620+75, 30);
 
     //Displays the moves that have been made this game
@@ -92,6 +102,7 @@ void drawSceneBoard( QGraphicsScene & scene){
         movesList2->setTextInteractionFlags(Qt::TextSelectableByMouse | Qt::TextSelectableByKeyboard);
     }
 
+    //reset button
     QPushButton *resetButton = new QPushButton;
     QObject::connect(resetButton, &QPushButton::clicked, [](){resetFlag = true;});
     resetButton->setFont(QFont("Arial", 14));
@@ -99,6 +110,7 @@ void drawSceneBoard( QGraphicsScene & scene){
     resetButton->setText("Reset Game");
     scene.addWidget(resetButton);
 
+    //refresh button
     QPushButton *refreshButton = new QPushButton;
     QObject::connect(refreshButton, &QPushButton::clicked, [](){refreshFlag = true;});
     refreshButton->setFont(QFont("Arial", 14));
@@ -129,6 +141,22 @@ void drawSceneBoard( QGraphicsScene & scene){
     QObject::connect(comboBox, QOverload<int>::of(&QComboBox::activated),
         [&](int index){ if (index != 0) boardLayout = index; else boardLayout = Standard; });
     scene.addWidget(comboBox);
+
+    QPushButton *authorInfoButton = new QPushButton;
+    QObject::connect(authorInfoButton, &QPushButton::clicked, [](){
+        //Pop up to show author info
+        QMessageBox::information(0, QString("Author info"),
+                                 QString("This Checkers GUI was created by Bryce Dombrowski, using C++ and Qt.\n"
+                                         "Links:\n"
+                                         "https://github.com/fwacer/Checkers-Game\n"
+                                         "https://brycedombrowski.com/2018/01/13/winter-2017-18-checkers-game-gui/"), QMessageBox::Ok);
+    });
+    authorInfoButton->setFont(QFont("Arial", 14));
+    authorInfoButton->setGeometry(QRect(620 + 75 + 130, 75 + 60, 110, 30));
+    authorInfoButton->setText("Author Info");
+    scene.addWidget(authorInfoButton);
+
+
 
     //std::map<std::pair<char, char>, QGraphicsItem> visualBoard;
     QGraphicsItem *BackdropItem = new Backdrop(); //can accept drops and return an error if the user misses dropping on a valid square
