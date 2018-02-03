@@ -16,8 +16,8 @@
 #include <QGraphicsView>
 #include <QGraphicsSceneDragDropEvent>
 
-static const std::vector<std::string> gameStateVector = {"Invalid Move", "" /*Valid Move*/, "White Wins", "Black Wins", "Draw", };
-static bool userCreatingBoardFlag = false;
+namespace CV{static const std::vector<std::string> gameStateVector = {"Invalid Move", "" /*Valid Move*/, "White Wins", "Black Wins", "Draw", };}
+namespace CF{static bool userCreatingBoardFlag = false;}
 
 typedef enum BoardLayout{
     Standard = 1,

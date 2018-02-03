@@ -128,7 +128,7 @@ private:
     //User creating a board:
 
     void mousePressEvent(QGraphicsSceneMouseEvent * event){
-        if (userCreatingBoardFlag){
+        if (CF::userCreatingBoardFlag){
             event->setAccepted(true);
             if (event->button()==Qt::LeftButton){ //left click cycles through colours
                 switch(customEditingFlag){

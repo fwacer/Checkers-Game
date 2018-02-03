@@ -358,16 +358,20 @@ std::pair< std::vector<std::pair<char, char>>, std::vector<std::pair<char, char>
             //Top right square
             possibleJumpedPiece = gameBoard.at({ square.first + 1, square.second + 1 });
             if ((possibleJumpedPiece == pieces[enemy]) || (possibleJumpedPiece == pieces[enemy + 1] /*king*/)) {
-                output.push_back({ square.first + 2, square.second + 2 });
-                jumped.push_back({ square.first + 1, square.second + 1 });
+                if (gameBoard.find({square.first+2, square.second+2})->second == pieces[Empty]){
+                    output.push_back({ square.first + 2, square.second + 2 });
+                    jumped.push_back({ square.first + 1, square.second + 1 });
+                }
             }
         }
         if ((square.first > 'b') && (square.second < '7')) { //Make sure we are jumping over an enemy piece
             //Top left square
             possibleJumpedPiece = gameBoard.at({ square.first - 1, square.second + 1 });
             if ((possibleJumpedPiece == pieces[enemy]) || (possibleJumpedPiece == pieces[enemy + 1])) {
-                output.push_back({ square.first - 2, square.second + 2 });
-                jumped.push_back({ square.first - 1, square.second + 1 });
+                if (gameBoard.find({square.first-2, square.second+2})->second == pieces[Empty]){
+                    output.push_back({ square.first - 2, square.second + 2 });
+                    jumped.push_back({ square.first - 1, square.second + 1 });
+                }
             }
         }
     }
@@ -377,8 +381,10 @@ std::pair< std::vector<std::pair<char, char>>, std::vector<std::pair<char, char>
             //Bottom right square
             possibleJumpedPiece = gameBoard.at({ square.first + 1, square.second - 1 });
             if ((possibleJumpedPiece == pieces[enemy]) || (possibleJumpedPiece == pieces[enemy + 1])) {
-                output.push_back({ square.first + 2, square.second - 2 });
-                jumped.push_back({ square.first + 1, square.second - 1 });
+                if (gameBoard.find({square.first+2, square.second-2})->second == pieces[Empty]){
+                    output.push_back({ square.first + 2, square.second - 2 });
+                    jumped.push_back({ square.first + 1, square.second - 1 });
+                }
             }
         }
 
@@ -386,8 +392,10 @@ std::pair< std::vector<std::pair<char, char>>, std::vector<std::pair<char, char>
             //Bottom left piece
             possibleJumpedPiece = gameBoard.at({ square.first - 1, square.second - 1 });
             if ((possibleJumpedPiece == pieces[enemy]) || (possibleJumpedPiece == pieces[enemy + 1])) {
-                output.push_back({ square.first - 2, square.second - 2 });
-                jumped.push_back({ square.first - 1, square.second - 1 });
+                if (gameBoard.find({square.first-2, square.second-2})->second == pieces[Empty]){
+                    output.push_back({ square.first - 2, square.second - 2 });
+                    jumped.push_back({square.first - 1, square.second - 1});
+                }
             }
         }
     }
@@ -484,7 +492,7 @@ void movePiece(std::pair<char, char> &from,
     gameBoard.at(to) = gameBoard.at(from);
     gameBoard.at(from) = pieces[Empty];
 }
-//
+//Checks if players have pieces remaining to play
 int checkWinStatus(std::map<std::pair<char, char>, char> & gameBoard, int & playerTurn){
     if ((findPiecesRemaining(White, gameBoard)).size() == 0) {
         if ((findPiecesRemaining(Black, gameBoard)).size() == 0){
