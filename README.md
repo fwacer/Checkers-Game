@@ -15,6 +15,7 @@ Features:
  * Ability to exit the program, reset the board, change between some built in layouts
  * Custom board layout creator
  * A fancy installer (not necessary, but was interesting to learn!)
+ * A simple AI
 
 Photo:
 
@@ -23,7 +24,7 @@ Photo:
 Things to add/improve:
  * Currently, the whole scene is discarded and redrawn every time a move is made. There is probably a better way to do this, by somehow keeping track of all objects in the scene and adding or removing them as necessary.
  * Animation of "jumps"
- * AI for a computer opponent
+ * ~~AI for a computer opponent~~ Completed
  * Deployment on Linux / Mac
 
 Known bug:
